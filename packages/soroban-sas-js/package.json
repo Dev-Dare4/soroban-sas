@@ -14,6 +14,9 @@
       "require": "./dist/index.cjs"
     }
   },
+  "bin": {
+    "sas-typegen": "dist/cli.js"
+  },
   "files": [
     "dist"
   ],
