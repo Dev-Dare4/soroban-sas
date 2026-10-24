@@ -501,7 +501,8 @@ impl SASClient {
         let env = &Env::default();
         let uid = UID(BytesN::from_array(env, uid));
         let arg = simulate::encode_arg(env, &uid)?;
-        let result = invoke_read_only(env, rpc, registry_contract_id, "get_schema", vec![arg])?;
+        let result: Option<SchemaRecord> =
+            invoke_read_only(env, rpc, registry_contract_id, "get_schema", vec![arg])?;
         if use_cache && self.schema_cache_capacity > 0 && !self.schema_cache_ttl.is_zero() {
             if let Ok(mut cache) = self.schema_cache.lock() {
                 cache.entries.insert(
