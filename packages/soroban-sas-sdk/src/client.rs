@@ -176,6 +176,7 @@ pub struct SASClient {
 impl SASClient {
     /// Instantiates a new SASClient with the given contract ID and default
     /// submission policy.
+    #[allow(clippy::arc_with_non_send_sync)]
     pub fn new(contract_id: String) -> Self {
         Self {
             contract_id,
